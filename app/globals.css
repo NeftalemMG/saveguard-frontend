@@ -1,35 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: white;
-  color: #1a1a1a;
+  background: #F6F7ED;
+  color: #001F3F;
+  font-family: 'Inter', -apple-system, sans-serif;
+  overflow-x: hidden;
 }
 
-.glass-nav {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+/* Color palette as CSS variables */
+:root {
+  --picture-book-green: #00804C;
+  --first-colors-spring: #DBE64C;
+  --praxeti-white: #F6F7ED;
+  --montis: #74C365;
+  --midnight-mirage: #001F3F;
+  --nuit-blanche: #1E488F;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: all 0.2s ease;
+/* Scribble elements */
+.scribble {
+  position: relative;
 }
 
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(139, 115, 85, 0.2);
+.scribble::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0,5 Q25,0 50,5 T100,5' stroke='%2374C365' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-size: 100px 10px;
+  background-repeat: repeat-x;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #8B7355 0%, #5D4E37 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* New sketch underline variations */
+.sketch-underline-green {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-underline-green::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  bottom: -6px;
+  width: 104%;
+  height: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M1,4 Q50,1 100,4 T199,4' stroke='%2374C365' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 8px;
+  opacity: 0.8;
+}
+
+.sketch-underline-yellow {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-underline-yellow::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  bottom: -6px;
+  width: 104%;
+  height: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M1,4 Q50,1 100,4 T199,4' stroke='%23DBE64C' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 8px;
+  opacity: 0.8;
+}
+
+.sketch-underline-yellow-bright {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-underline-yellow-bright::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  bottom: -10px;
+  width: 106%;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M1,6 Q50,3 100,6 T199,6' stroke='%23DBE64C' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 12px;
+  opacity: 1;
+}
+
+.sketch-underline-montis {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-underline-montis::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  bottom: -6px;
+  width: 104%;
+  height: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M1,4 Q50,1 100,4 T199,4' stroke='%2374C365' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 8px;
+  opacity: 0.6;
+}
+
+/* Floating animation for dots */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(5px);
+  }
+}
+
+.animate-float {
+  animation: float ease-in-out infinite;
+}
+
+/* Japanese spacing */
+.jp-spacing {
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+}
+
+/* Asymmetric card */
+.card-asymmetric {
+  clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+}
+
+/* Brutal button - Updated for new colors */
+.btn-brutal {
+  position: relative;
+  background: #001F3F;
+  color: #DBE64C;
+  border: 2px solid #001F3F;
+  transition: all 0.15s ease;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+}
+
+.btn-brutal:hover {
+  background: #DBE64C;
+  color: #001F3F;
+  transform: translate(2px, -2px);
+  box-shadow: -4px 4px 0 #001F3F;
+}
+
+/* Glass effect - Updated */
+.glass-brutal {
+  background: rgba(246, 247, 237, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(246, 247, 237, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Sketch draw animation */
+@keyframes sketch-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-sketch-draw {
+  animation: sketch-draw 0.8s ease-out forwards;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: #DBE64C;
+  color: #001F3F;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid #74C365;
+  outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Override transitions for specific interactions */
+*:hover,
+*:focus,
+*:active {
+  transition-duration: 200ms;
+}
+
+/* Toast animations */
+@keyframes slide-in {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+.animate-shrink {
+  animation: shrink 5s linear;
 }
